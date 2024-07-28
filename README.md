@@ -21,6 +21,9 @@ Firstly, sorry it took me so long to make this application - I had gotten busy w
 - Dogs have names, prices and breeds
 - Simple application with no frontend
 - Flask application in the console
+- textfile databases (open them to see your useraccount)
+    * DB.txt(keeps the dogs)
+    * user.txt (keeps the users)
 
 
 # Extra ideas
