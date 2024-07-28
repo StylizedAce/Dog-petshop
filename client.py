@@ -1,6 +1,7 @@
 import requests
 import subprocess
 import time
+import sys # So the exit function can actually close the app
 
 BASE_URL = "http://localhost:5000"
 session = requests.Session()  # session object to funnel REST operations through
@@ -35,6 +36,7 @@ def login_user():
     response = session.post(f"{BASE_URL}/login", json={'username': username, 'password': password})
     if response.status_code == 200:
         print("Login successful.")
+        print(f"Welcome {username} !")
         return username
     else:
         print("Error:", response.json().get('error', 'Invalid credentials'))
@@ -54,8 +56,8 @@ def show_dogs():
         print("\nDogs available:")
         for dog in data['dogs']:
             if dog['status'] == 'AVAILABLE':
-                print(f"{dog['id']}. {dog['breed']} - {dog['name']} - ${dog['price']}")
-        print(f"\nYour balance: ${data['balance']}")
+                print(f"{dog['id']}. {dog['breed']} - {dog['name']} - {dog['price']} gems")
+        print(f"\nYour gem-balance: ${data['gems']}")
     else:
         print("Error:", response.json().get('error', 'Unauthorized'))
 
@@ -79,6 +81,10 @@ def buy_dog():
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
             break  # Exit the loop in case of unexpected errors
+
+
+def reset_shop():
+    response = session.post(f"{BASE_URL}/reset")
 
 
 def main():
@@ -112,6 +118,7 @@ def main():
                     print("\n1. View Dogs")
                     print("2. Buy Dog")
                     print("3. Logout")
+                    print("4. Reset shop (Dev)")
                     choice = input("Choose an option: ")
                     
                     if choice == '1':
@@ -121,10 +128,14 @@ def main():
                     elif choice == '3':
                         logout_user()
                         break
+                    elif choice == '4':
+                        reset_shop()
+                        break
                     else:
                         print("Invalid choice, please try again.")
         elif choice == '3':
-            break
+            stopApp(flask_process)
+            sys.exit()
         else:
             print("Invalid choice, please choose one of the given options")
 
