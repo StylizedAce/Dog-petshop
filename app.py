@@ -18,7 +18,7 @@ def load_dogs_from_file(filename):
             })
     return dogs
 
-def load_users_from_file(filename):
+def load_users_from_file(filename): # DB.txt
     users = {}
     if os.path.exists(filename):
         with open(filename, 'r') as file:
@@ -27,7 +27,7 @@ def load_users_from_file(filename):
                 users[username] = {'password': password, 'gems': int(gems)}
     return users
 
-def save_users_to_file(filename, users):
+def save_users_to_file(filename, users): # users.txt
     with open(filename, 'w') as file:
         for username, details in users.items():
             file.write(f"{username},{details['password']},{details['gems']}\n")

@@ -3,7 +3,7 @@ import subprocess
 import time
 import sys # So the exit function can actually close the app
 
-BASE_URL = "http://localhost:5000"
+BASE_URL = "http://localhost:5000" 
 session = requests.Session()  # session object to funnel REST operations through
 
 
@@ -72,10 +72,10 @@ def buy_dog():
             response = session.post(f"{BASE_URL}/buy/{dog_id}")
             if response.status_code == 200:
                 print(response.json()['message'])
-                break  # Exit the loop after a successful purchase
+                break  # Exits the loop after a successful purchase
             else:
                 print("Error:", response.json().get('error', 'Unknown error or insufficient balance'))
-                break  # Exit the loop if there's an error in the response
+                break  # Exits the loop if there's an error in the response
         except ValueError:
             print("Invalid input. Please enter a valid dog ID.")
         except Exception as e:
@@ -91,10 +91,9 @@ def main():
 
     print("Starting server...")
 
-    # Start the Flask app
     flask_process = startApp()
 
-    # Give the server some time to start up
+    # little delay to make sure slower computers dont have issues
     time.sleep(2)
 
     if flask_process:
@@ -104,7 +103,7 @@ def main():
 
 
     while True:
-        print("\n1. Register")
+        print("1. Register")
         print("2. Login")
         print("3. Exit")
         choice = input("Choose an option: ")
