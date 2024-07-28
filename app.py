@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'mySecretKey'  # This key is necessary because i like using the session to manage the user data
 
-def load_dogs_from_file(filename):
+def load_dogs_from_file(filename): # DB.txt
     dogs = []
     with open(filename, 'r') as file:
         for line in file:
@@ -18,7 +18,7 @@ def load_dogs_from_file(filename):
             })
     return dogs
 
-def load_users_from_file(filename): # DB.txt
+def load_users_from_file(filename): # users.txt
     users = {}
     if os.path.exists(filename):
         with open(filename, 'r') as file:
@@ -27,7 +27,7 @@ def load_users_from_file(filename): # DB.txt
                 users[username] = {'password': password, 'gems': int(gems)}
     return users
 
-def save_users_to_file(filename, users): # users.txt
+def save_users_to_file(filename, users):
     with open(filename, 'w') as file:
         for username, details in users.items():
             file.write(f"{username},{details['password']},{details['gems']}\n")
@@ -41,7 +41,7 @@ def save_dog_info(dog_id, dogs_filename='DB.txt'):
             else: # The above and below are there because otherwise the write mode of the open() method would truncate the file thus removing existing info
                 file.write(f"{dog['id']},{dog['breed']},{dog['name']},{dog['price']},{dog['status']}\n")
 
-def update_dog_data(dogs_filename='DB.txt'):
+def update_dog_data(dogs_filename='DB.txt'): # This function is here so the list updates realtime and reflects changes to the data in-memory as well
     global dogs
     dogs = load_dogs_from_file(dogs_filename)
 
