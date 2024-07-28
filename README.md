@@ -2,6 +2,10 @@
 
 Firstly, sorry it took me so long to make this application - I had gotten busy with work recently and finally got some time off to make this application. I can feel i have gotten a little rusty, but i warm up quickly so that wouldnt be a problem for more than a day 
 
+### Your description:
+
+ a Flask app, to set up a dog shop with gems. So I need to have some breeds, names and prices so if you enter the shop you can buy a pet :)
+
 
 # How to start
 
@@ -9,10 +13,21 @@ Firstly, sorry it took me so long to make this application - I had gotten busy w
 ``` python client.py ```
     * I have made it so the app.py is automatically run by client.py so its easier to start up.
 
+### Flow
 
-### Your description:
+1. You will be presented with a startmenu and you will choose to Login as i have already made an account for you 
+username: ```Ruben``` password: ```hello```
+    
+    - You can also register your own account if you want!
 
- a Flask app, to set up a dog shop with gems. So I need to have some breeds, names and prices so if you enter the shop you can buy a pet :)
+2. Once you are in you will want to see the list of dogs ```Option 1```, i kept this list short to make it easier on the eyes.
+
+3. When you see a dog you like, you press ```Option 2``` to initiate the buy phase, and input the dogs id
+
+4. If you have sufficient funds (gems) you'll now own a new dog, congrats! :D
+
+    * To reset everything start the application and choose ```option 4```, this reverts all dogs to ```AVAILABLE``` and resets your gem-balance
+
 
 
 # Features
