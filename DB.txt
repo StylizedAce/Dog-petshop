@@ -1,0 +1,5 @@
+1,Labrador,Buddy,500,AVAILABLE
+2,Beagle,Charlie,400,AVAILABLE
+3,German Shepherd,Max,600,AVAILABLE
+4,Bulldog,Rocky,550,AVAILABLE
+5,Poodle,Bella,450,AVAILABLE

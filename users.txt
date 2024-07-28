@@ -1,0 +1,3 @@
+Ace,password1,1000
+Ruben,password2,1200
+joe,hejhej,1000
